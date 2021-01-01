@@ -51,6 +51,12 @@ ruleTester.run('no-mutating-methods', rule, {
         allowedObjects: ['R']
       }]
     },
+    {
+      code: 'this.$router.push(a)',
+      options: [{
+        allowedObjects: ['$router']
+      }]
+    },
     'Object.keys(a)',
     'Object.values(a)'
   ],

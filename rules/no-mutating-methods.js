@@ -45,6 +45,10 @@ const create = function (context) {
         return;
       }
 
+      if (node.callee.object.type === 'MemberExpression' && allowedObjects.indexOf(node.callee.object.property.name) !== -1) {
+        return;
+      }
+
       if (node.callee.object.name === 'Object') {
         if (mutatingObjectMethods.indexOf(node.callee.property.name) !== -1) {
           context.report({
